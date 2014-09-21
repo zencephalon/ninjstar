@@ -57,6 +57,10 @@ Ninja.prototype.move = function() {
   this.updatePosition();
 }
 
+Ninja.prototype.inBounds = function() {
+  return (this.x > 0 && this.x < this.$arena.width() && this.y > 0 && this.y < this.$arena.height())
+}
+
 $(document).ready(function() {
   game = new Game();
 
