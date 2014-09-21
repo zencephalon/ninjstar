@@ -12,8 +12,8 @@ function Ninja($arena) {
 }
 
 Ninja.prototype.init = function() {
-  this.$arena.append("<div id='ninja'></div>");
-  this.$html = $('#ninja');
+  this.$html = $("<div id='ninja'></div>");
+  this.$arena.append(this.$html);
   this.$html.css('position', 'relative');
   this.speed = 3;
   this.updatePosition();
