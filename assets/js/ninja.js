@@ -55,5 +55,9 @@ Ninja.prototype.move = function() {
 }
 
 Ninja.prototype.inBounds = function() {
-  return (this.x > 0 && this.x < (this.$arena.width() - this.$html.width()) && this.y > 0 && this.y < (this.$arena.height() - this.$html.height()))
+  return (this.x > 0 &&
+          this.x < (this.$arena.width() - this.$html.width()) &&
+          this.y > 0 &&
+          this.y < (this.$arena.height() - this.$html.height())
+         )
 }
