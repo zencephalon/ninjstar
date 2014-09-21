@@ -24,6 +24,7 @@ Ninja.prototype.init = function() {
   this.$arena.append("<div id='ninja'></div>");
   this.$html = $('#ninja');
   this.$html.css('position', 'relative');
+  this.speed = 3;
   this.updatePosition();
 }
 
@@ -35,7 +36,16 @@ Ninja.prototype.updatePosition = function() {
 Ninja.prototype.move = function() {
   switch(this.dir) {
     case 2:
-      this.y += 1;
+      this.y += this.speed;
+      break;
+    case 8:
+      this.y -= this.speed;
+      break;
+    case 6:
+      this.x += this.speed;
+      break;
+    case 4:
+      this.x -= this.speed;
       break;
   }
   this.updatePosition();
@@ -46,6 +56,15 @@ $(document).ready(function() {
 
   Mousetrap.bind('down', function() {
     game.ninja.dir = 2;
+  });
+  Mousetrap.bind('up', function() {
+    game.ninja.dir = 8;
+  });
+  Mousetrap.bind('left', function() {
+    game.ninja.dir = 4;
+  });
+  Mousetrap.bind('right', function() {
+    game.ninja.dir = 6;
   });
 
   setInterval(game.process.bind(game), 20); // 50 FPS
