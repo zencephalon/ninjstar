@@ -1,12 +1,3 @@
-function Game() {
-  this.$arena = $('#arena');
-  this.ninja = new Ninja(this.$arena);
-}
-
-Game.prototype.process = function() {
-  this.ninja.move();
-}
-
 function Ninja($arena) {
   this.x = $arena.width() / 2;
   this.y = $arena.height() / 2;
@@ -66,22 +57,3 @@ Ninja.prototype.move = function() {
 Ninja.prototype.inBounds = function() {
   return (this.x > 0 && this.x < (this.$arena.width() - this.$html.width()) && this.y > 0 && this.y < (this.$arena.height() - this.$html.height()))
 }
-
-$(document).ready(function() {
-  game = new Game();
-
-  Mousetrap.bind('down', function() {
-    game.ninja.dir = 2;
-  });
-  Mousetrap.bind('up', function() {
-    game.ninja.dir = 8;
-  });
-  Mousetrap.bind('left', function() {
-    game.ninja.dir = 4;
-  });
-  Mousetrap.bind('right', function() {
-    game.ninja.dir = 6;
-  });
-
-  setInterval(game.process.bind(game), 20); // 50 FPS
-});
