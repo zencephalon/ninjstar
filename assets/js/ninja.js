@@ -8,6 +8,8 @@ function Ninja($arena) {
   1 2 3
   */
   this.$arena = $arena;
+  this.sprite_left = 'url("assets/img/ninja-left.gif")';
+  this.sprite_right = 'url("assets/img/ninja-right.gif")';
   this.init();
 }
 
@@ -23,10 +25,10 @@ Ninja.prototype.updatePosition = function() {
   this.$html.css('left', this.x);
   this.$html.css('top', this.y);
   if (this.dir == 4) {
-    this.$html.css('background-image', 'url("assets/img/ninja-left.gif")');
+    this.$html.css('background-image', this.sprite_left);
   }
   if (this.dir == 6) {
-    this.$html.css('background-image', 'url("assets/img/ninja-right.gif")');
+    this.$html.css('background-image', this.sprite_right);
   }
 }
 
