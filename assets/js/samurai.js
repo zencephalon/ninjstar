@@ -7,10 +7,10 @@ function Samurai($arena, ninja) {
   this.init();
 }
 
-Ninja.prototype.init = function() {
+Samurai.prototype.init = function() {
   this.$html = $("<div class='samurai'></div>");
   this.$arena.append(this.$html);
   this.$html.css('position', 'relative');
   this.speed = 2;
-  this.updatePosition();
+  //this.updatePosition();
 }
