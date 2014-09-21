@@ -1,12 +1,11 @@
 function Game() {
   this.$arena = $('#arena');
   this.ninja = new Ninja(this.$arena);
-
-  Mousetrap.bind('down', function() {
-    this.ninja.dir = 2;
-  })
 }
 
+Game.prototype.process = function() {
+  //console.log("Game loop");
+}
 
 function Ninja($arena) {
   this.x = $arena.width() / 2;
@@ -35,4 +34,10 @@ Ninja.prototype.updatePosition = function() {
 
 $(document).ready(function() {
   game = new Game();
+
+  Mousetrap.bind('down', function() {
+    game.ninja.dir = 2;
+  });
+
+  setInterval(game.process, 20); // 50 FPS
 });
