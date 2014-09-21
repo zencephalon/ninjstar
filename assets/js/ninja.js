@@ -12,6 +12,14 @@ function Ninja($arena) {
 
 Ninja.prototype.init = function() {
   this.$arena.append("<div id='ninja'></div>");
+  this.$html = $('#ninja');
+  this.$html.css('position', 'relative');
+  this.updatePosition();
+}
+
+Ninja.prototype.updatePosition = function() {
+  this.$html.css('left', this.x);
+  this.$html.css('top', this.y);
 }
 
 $(document).ready(function() {
