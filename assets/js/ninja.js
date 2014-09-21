@@ -4,8 +4,8 @@ function Game() {
 }
 
 function Ninja($arena) {
-  this.x = 400;
-  this.y = 400;
+  this.x = $arena.width() / 2;
+  this.y = $arena.height() / 2;
   this.$arena = $arena;
   this.init();
 }
