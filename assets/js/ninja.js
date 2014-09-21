@@ -4,7 +4,7 @@ function Game() {
 }
 
 Game.prototype.process = function() {
-  //console.log("Game loop");
+  this.ninja.move();
 }
 
 function Ninja($arena) {
@@ -32,6 +32,15 @@ Ninja.prototype.updatePosition = function() {
   this.$html.css('top', this.y);
 }
 
+Ninja.prototype.move = function() {
+  switch(this.dir) {
+    case 2:
+      this.y += 1;
+      break;
+  }
+  this.updatePosition();
+}
+
 $(document).ready(function() {
   game = new Game();
 
@@ -39,5 +48,5 @@ $(document).ready(function() {
     game.ninja.dir = 2;
   });
 
-  setInterval(game.process, 20); // 50 FPS
+  setInterval(game.process.bind(game), 20); // 50 FPS
 });
