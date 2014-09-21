@@ -1,11 +1,22 @@
 function Game() {
   this.$arena = $('#arena');
   this.ninja = new Ninja(this.$arena);
+
+  Mousetrap.bind('down', function() {
+    this.ninja.dir = 2;
+  })
 }
+
 
 function Ninja($arena) {
   this.x = $arena.width() / 2;
   this.y = $arena.height() / 2;
+  this.dir = 5; 
+  /*
+  7 8 9
+  4 5 6
+  1 2 3
+  */
   this.$arena = $arena;
   this.init();
 }
