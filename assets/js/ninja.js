@@ -40,6 +40,8 @@ Ninja.prototype.updatePosition = function() {
 }
 
 Ninja.prototype.move = function() {
+  old_x = this.x;
+  old_y = this.y;
   switch(this.dir) {
     case 2:
       this.y += this.speed;
@@ -54,11 +56,15 @@ Ninja.prototype.move = function() {
       this.x -= this.speed;
       break;
   }
+  if (! this.inBounds()) {
+    this.x = old_x;
+    this.y = old_y;
+  }
   this.updatePosition();
 }
 
 Ninja.prototype.inBounds = function() {
-  return (this.x > 0 && this.x < this.$arena.width() && this.y > 0 && this.y < this.$arena.height())
+  return (this.x > 0 && this.x < (this.$arena.width() - this.$html.width()) && this.y > 0 && this.y < (this.$arena.height() - this.$html.height()))
 }
 
 $(document).ready(function() {
