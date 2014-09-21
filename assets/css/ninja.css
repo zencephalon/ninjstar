@@ -3,3 +3,9 @@
   height: 600;
   border: 1px solid #000;
 }
+
+#ninja {
+  background-image: url('../img/ninja.gif');
+  width: 17px;
+  height: 17px;
+}
