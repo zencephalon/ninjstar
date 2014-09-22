@@ -48,6 +48,12 @@ Ninja.prototype.move = function() {
 Ninja.prototype.updatePosition = function() {
   this.$html.css("top", this.y);
   this.$html.css("left", this.x);
+  if (this.dir === 6) {
+    this.$html.css("background-image", "url('assets/img/ninja-right.gif')")
+  }
+  if (this.dir === 4) {
+    this.$html.css("background-image", "url('assets/img/ninja-left.gif')")
+  }
 }
 
 // Ninja.prototype.init = function() {
