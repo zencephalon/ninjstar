@@ -75,4 +75,6 @@ $(document).ready(function() {
   Mousetrap.bind("right", function() {
     game.ninja.dir = 6;
   });
+
+  setInterval(game.process.bind(game), 20) // 50 FPS, 20*50 === 1000
 });
