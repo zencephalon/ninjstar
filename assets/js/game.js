@@ -1,6 +1,7 @@
 function Game($arena) {
   this.$arena = $arena;
   this.ninja = new Ninja(this.$arena);
+  this.samurais = [new Samurai(this.$arena)];
 }
 
 Game.prototype.process = function() {
