@@ -6,6 +6,9 @@ function Game($arena) {
 
 Game.prototype.process = function() {
   this.ninja.move();
+  this.samurais.forEach(function(samurai) {
+    samurai.move();
+  });
 }
 
 $(document).ready(function() {
