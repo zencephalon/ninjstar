@@ -1,12 +1,3 @@
-function Game($arena) {
-  this.$arena = $arena;
-  this.ninja = new Ninja(this.$arena);
-}
-
-Game.prototype.process = function() {
-  this.ninja.move();
-}
-
 function Ninja($arena) {
   this.x = $arena.width() / 2;
   this.y = $arena.height() / 2;
@@ -68,26 +59,3 @@ Ninja.prototype.updatePosition = function() {
     this.$html.css("background-image", "url('assets/img/ninja-left.gif')")
   }
 }
-
-// Ninja.prototype.init = function() {
-// }
-
-$(document).ready(function() {
-  game = new Game($('#arena'));
-  Mousetrap.bind("down", function() {
-    game.ninja.dir = 2;
-  });
-  Mousetrap.bind("up", function() {
-    game.ninja.dir = 8;
-
-  });
-  Mousetrap.bind("left", function() {
-    game.ninja.dir = 4;
-
-  });
-  Mousetrap.bind("right", function() {
-    game.ninja.dir = 6;
-  });
-
-  setInterval(game.process.bind(game), 20) // 50 FPS, 20*50 === 1000
-});
