@@ -13,6 +13,11 @@ function Ninja($arena) {
   this.$html.css("width", 17);
   this.$html.css("height", 17);
   this.$arena.append(this.$html);
+  this.dir = 5;
+  /* 7 8 9
+     4 5 6
+     1 2 3
+     */
   this.updatePosition();
   //this.init();
 }
@@ -27,4 +32,18 @@ Ninja.prototype.updatePosition = function() {
 
 $(document).ready(function() {
   game = new Game($('#arena'));
+  Mousetrap.bind("down", function() {
+    game.ninja.dir = 2;
+  });
+  Mousetrap.bind("up", function() {
+    game.ninja.dir = 8;
+
+  });
+  Mousetrap.bind("left", function() {
+    game.ninja.dir = 4;
+
+  });
+  Mousetrap.bind("right", function() {
+    game.ninja.dir = 6;
+  });
 });
