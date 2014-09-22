@@ -3,6 +3,10 @@ function Game($arena) {
   this.ninja = new Ninja(this.$arena);
 }
 
+Game.prototype.process = function() {
+  this.ninja.move();
+}
+
 function Ninja($arena) {
   this.x = $arena.width() / 2;
   this.y = $arena.height() / 2;
@@ -14,12 +18,29 @@ function Ninja($arena) {
   this.$html.css("height", 17);
   this.$arena.append(this.$html);
   this.dir = 5;
+  this.speed = 3;
   /* 7 8 9
      4 5 6
      1 2 3
      */
   this.updatePosition();
   //this.init();
+}
+
+Ninja.prototype.move = function() {
+  switch(this.dir) {
+    case 2:
+      this.y += this.speed;
+      break;
+    case 4:
+      break;
+    case 6: 
+      break;
+    case 8:
+      this.y -= this.speed;
+      break;
+  }
+  this.updatePosition();
 }
 
 Ninja.prototype.updatePosition = function() {
