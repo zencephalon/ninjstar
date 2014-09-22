@@ -59,6 +59,6 @@ Ninja.prototype.updatePosition = function() {
     this.$html.css("background-image", this.sprite_right);
   }
   if (this.dir === 4) {
-    this.$html.css("background-image", this.sprite_left);
+    this.$html.css("background-image", this.sprite_right);
   }
 }

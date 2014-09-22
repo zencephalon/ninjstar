@@ -1,9 +1,9 @@
-function Samurai($arena, ninja) {
+function Samurai($arena, ninja, x, y) {
   this.$arena = $arena;
   this.ninja = ninja;
 
-  this.x = 0;
-  this.y = 0;
+  this.x = x;
+  this.y = y;
 
   this.$html = $("<div class='samurai'></div>");
   this.$html.css("position", "relative");
@@ -22,14 +22,12 @@ function Samurai($arena, ninja) {
 Samurai.prototype.move = function() {
   if (this.x > this.ninja.x) {
     this.x -= this.speed;
-  }
-  if (this.x < this.ninja.x) {
+  } else if (this.x < this.ninja.x) {
     this.x += this.speed;
   }
   if (this.y < this.ninja.y) {
     this.y += this.speed;
-  }
-  if (this.y > this.ninja.y) {
+  } else if (this.y > this.ninja.y) {
     this.y -= this.speed;
   }
   this.updatePosition();

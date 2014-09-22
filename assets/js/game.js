@@ -1,7 +1,7 @@
 function Game($arena) {
   this.$arena = $arena;
   this.ninja = new Ninja(this.$arena);
-  this.samurais = [new Samurai(this.$arena, this.ninja)];
+  this.samurais = [new Samurai(this.$arena, this.ninja, 0, 0), new Samurai(this.$arena, this.ninja, 560, 560)];
 }
 
 Game.prototype.process = function() {
