@@ -33,8 +33,10 @@ Ninja.prototype.move = function() {
       this.y += this.speed;
       break;
     case 4:
+      this.x -= this.speed;
       break;
     case 6: 
+      this.x += this.speed;
       break;
     case 8:
       this.y -= this.speed;
