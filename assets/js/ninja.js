@@ -32,6 +32,19 @@ Game = {
   }
 }
 
+Mousetrap.bind('right', function() {
+  console.log('RIGHT');
+})
+Mousetrap.bind('right', function() {
+  console.log('RIGHT');
+})
+Mousetrap.bind('right', function() {
+  console.log('RIGHT');
+})
+Mousetrap.bind('right', function() {
+  console.log('RIGHT');
+})
+
 $(document).ready(function() {
   n = new Ninja();
 });
