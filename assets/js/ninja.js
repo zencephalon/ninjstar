@@ -9,11 +9,7 @@ function Ninja() {
 Ninja.prototype.initDisplay = function() {
   this.$ninja = $("<div class='ninja'></div>")
   $('#arena').append(this.$ninja);
-  this.$ninja.css('position', 'relative');
-  this.$ninja.css('background-image', 'url("assets/img/ninja.gif")');
-  this.$ninja.css('background-repeat', 'no-repeat');
-  this.$ninja.css('height', 17);
-  this.$ninja.css('width', 17);
+
 
   this.updateDisplay();
 }
