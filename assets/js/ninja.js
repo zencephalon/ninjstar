@@ -1,7 +1,8 @@
-function Ninja() {
-  this.x = 300;
-  this.y = 300;
-  this.dir = "right";
+function Ninja(arena) {
+  this.$arena = arena;
+  this.x = this.$arena.width() / 2;
+  this.y = this.$arena.height() / 2;
+  this.dir = "sitting there like a lazybutt";
   this.speed = 3;
   this.initDisplay();
 }
@@ -10,11 +11,12 @@ Ninja.prototype.initDisplay = function() {
   this.$ninja = $("<div class='ninja'></div>")
   $('#arena').append(this.$ninja);
 
-
   this.updateDisplay();
 }
 
 Ninja.prototype.move = function() {
+  old_x = this.x;
+  old_y = this.y;
   switch (this.dir) {
     case 'right':
       this.x += this.speed;
@@ -29,7 +31,16 @@ Ninja.prototype.move = function() {
       this.y += this.speed;
       break;
   }
+  if (! this.inBounds()) {
+    this.x = old_x;
+    this.y = old_y;
+  }
   this.updateDisplay();
+}
+
+Ninja.prototype.inBounds = function() {
+  return (this.x > 0 && this.x < this.$arena.width() &&
+  this.y > 0 && this.y < this.$arena.height())
 }
 
 Ninja.prototype.updateDisplay = function() {
@@ -43,7 +54,7 @@ Ninja.classMethod = function() {
 
 function Game() {
   this.$arena = $('#arena');
-  this.ninja = new Ninja();
+  this.ninja = new Ninja(this.$arena);
 }
 
 Game.prototype.loop = function() {
