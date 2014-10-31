@@ -1,10 +1,15 @@
 function Ninja() {
   this.x = 300;
   this.y = 300;
-  this.updateDisplay = function() {
-    console.log(this.x);
-    console.log(this.y);
-  }
+  this.initDisplay();
+}
+
+Ninja.prototype.initDisplay = function() {
+  this.$ninja = $("<div class='ninja'>NINJA</div>")
+  $('#arena').append(this.$ninja);
+  this.$ninja.css('position', 'relative');
+  this.$ninja.css('top', this.y);
+  this.$ninja.css('left', this.x);
 }
 
 Ninja.prototype.updateDisplay = function() {
@@ -22,3 +27,7 @@ Game = {
     return "goodbye";
   }
 }
+
+$(document).ready(function() {
+  n = new Ninja();
+});
