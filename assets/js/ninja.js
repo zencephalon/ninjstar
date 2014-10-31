@@ -10,12 +10,12 @@ Ninja.prototype.initDisplay = function() {
   this.$ninja = $("<div class='ninja'></div>")
   $('#arena').append(this.$ninja);
   this.$ninja.css('position', 'relative');
-  this.$ninja.css('top', this.y);
-  this.$ninja.css('left', this.x);
   this.$ninja.css('background-image', 'url("assets/img/ninja.gif")');
   this.$ninja.css('background-repeat', 'no-repeat');
   this.$ninja.css('height', 17);
   this.$ninja.css('width', 17);
+  
+  this.updateDisplay();
 }
 
 Ninja.prototype.move = function() {
@@ -24,22 +24,25 @@ Ninja.prototype.move = function() {
       this.x += this.speed;
       break;
   }
+  this.updateDisplay();
 }
 
 Ninja.prototype.updateDisplay = function() {
-  console.log(this.x);
-  console.log(this.y);
+  this.$ninja.css('top', this.y);
+  this.$ninja.css('left', this.x);
 }
 
 Ninja.classMethod = function() {
 
 }
 
-Game = {
-  loop: function() {
-    console.log("Hello");
-    return "goodbye";
-  }
+function Game() {
+  this.$arena = $('#arena');
+  this.ninja = new Ninja();
+}
+
+Game.prototype.loop = function() {
+  this.ninja.move();
 }
 
 Mousetrap.bind('right', function() {
@@ -56,5 +59,6 @@ Mousetrap.bind('right', function() {
 })
 
 $(document).ready(function() {
-  n = new Ninja();
+  game = new Game();
+  setInterval(function() { game.loop(); }, 20);
 });
