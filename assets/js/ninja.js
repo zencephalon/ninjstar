@@ -1,6 +1,8 @@
 function Ninja() {
   this.x = 300;
   this.y = 300;
+  this.dir = "right";
+  this.speed = 3;
   this.initDisplay();
 }
 
@@ -14,6 +16,14 @@ Ninja.prototype.initDisplay = function() {
   this.$ninja.css('background-repeat', 'no-repeat');
   this.$ninja.css('height', 17);
   this.$ninja.css('width', 17);
+}
+
+Ninja.prototype.move = function() {
+  switch (this.dir) {
+    case 'right':
+      this.x += this.speed;
+      break;
+  }
 }
 
 Ninja.prototype.updateDisplay = function() {
