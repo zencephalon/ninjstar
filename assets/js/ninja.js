@@ -14,7 +14,7 @@ Ninja.prototype.initDisplay = function() {
   this.$ninja.css('background-repeat', 'no-repeat');
   this.$ninja.css('height', 17);
   this.$ninja.css('width', 17);
-  
+
   this.updateDisplay();
 }
 
@@ -22,6 +22,15 @@ Ninja.prototype.move = function() {
   switch (this.dir) {
     case 'right':
       this.x += this.speed;
+      break;
+    case 'left':
+      this.x -= this.speed;
+      break;
+    case 'up':
+      this.y -= this.speed;
+      break;
+    case 'down':
+      this.y += this.speed;
       break;
   }
   this.updateDisplay();
@@ -45,20 +54,14 @@ Game.prototype.loop = function() {
   this.ninja.move();
 }
 
-Mousetrap.bind('right', function() {
-  console.log('RIGHT');
-})
-Mousetrap.bind('right', function() {
-  console.log('RIGHT');
-})
-Mousetrap.bind('right', function() {
-  console.log('RIGHT');
-})
-Mousetrap.bind('right', function() {
-  console.log('RIGHT');
-})
 
 $(document).ready(function() {
   game = new Game();
   setInterval(function() { game.loop(); }, 20);
-});
+
+  ['left', 'right', 'up', 'down'].forEach(function(direction) {
+    Mousetrap.bind(direction, function() {
+      game.ninja.dir = direction;
+    });
+  });
+})
