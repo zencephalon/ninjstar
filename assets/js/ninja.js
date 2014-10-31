@@ -4,6 +4,8 @@ function Ninja(arena) {
   this.y = this.$arena.height() / 2;
   this.dir = "sitting there like a lazybutt";
   this.speed = 3;
+  this.height = 17;
+  this.width = 17;
   this.initDisplay();
 }
 
@@ -39,13 +41,13 @@ Ninja.prototype.move = function() {
 }
 
 Ninja.prototype.inBounds = function() {
-  return (this.x > 0 && this.x < this.$arena.width() &&
-  this.y > 0 && this.y < this.$arena.height())
+  return (this.x > this.width / 2 && this.x < this.$arena.width() - this.width / 2 &&
+  this.y > this.height / 2 && this.y < this.$arena.height() - this.height / 2)
 }
 
 Ninja.prototype.updateDisplay = function() {
-  this.$ninja.css('top', this.y);
-  this.$ninja.css('left', this.x);
+  this.$ninja.css('top', this.y - this.height / 2);
+  this.$ninja.css('left', this.x - this.width / 2);
 }
 
 Ninja.classMethod = function() {
