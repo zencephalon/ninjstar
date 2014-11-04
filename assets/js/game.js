@@ -6,6 +6,11 @@ function Game() {
 
 Game.prototype.loop = function() {
   this.ninja.move();
+  ninja = this.ninja;
+  this.samurai.forEach(function (samurai) {
+    samurai.track(ninja);
+    samurai.move();
+  })
 }
 
 
