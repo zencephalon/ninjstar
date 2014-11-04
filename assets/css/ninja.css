@@ -11,3 +11,11 @@
   height: 17;
   width: 17;
 }
+
+.samurai {
+  position: relative;
+  background-image: url("../img/samurai.gif");
+  background-repeat: no-repeat;
+  height: 17;
+  width: 17;
+}
