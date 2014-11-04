@@ -50,6 +50,18 @@ Ninja.prototype.updateDisplay = function() {
   this.$ninja.css('left', this.x - this.width / 2);
 }
 
+Ninja.prototype.setDirection = function(dir) {
+  this.dir = dir;
+  switch (this.dir) {
+    case 'right':
+      this.$ninja.css('background-image', 'url("./assets/img/ninja-right.gif")');
+      break;
+    case 'left':
+      this.$ninja.css('background-image', 'url("./assets/img/ninja-left.gif")');
+      break;
+  }
+}
+
 Ninja.classMethod = function() {
 
 }
@@ -70,7 +82,7 @@ $(document).ready(function() {
 
   ['left', 'right', 'up', 'down'].forEach(function(direction) {
     Mousetrap.bind(direction, function() {
-      game.ninja.dir = direction;
+      game.ninja.setDirection(direction);
     });
   });
 })
