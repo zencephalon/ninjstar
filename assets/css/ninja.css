@@ -12,10 +12,18 @@
   width: 17;
 }
 
+.shuriken {
+  position: absolute;
+  background-image: url("../img/shuriken.gif");
+  background-repeat: no-repeat;
+  height: 16;
+  width: 16;
+}
+
 .samurai {
   position: absolute;
   background-image: url("../img/samurai.gif");
   background-repeat: no-repeat;
-  height: 17;
+  height: 19;
   width: 17;
 }

@@ -2,6 +2,7 @@ function Game() {
   this.$arena = $('#arena');
   this.ninja = new Ninja(this.$arena);
   this.samurai = [new Samurai(this.$arena), new Samurai(this.$arena)];
+  this.shurikens = [];
 }
 
 Game.prototype.loop = function() {
@@ -10,9 +11,16 @@ Game.prototype.loop = function() {
   this.samurai.forEach(function (samurai) {
     samurai.track(ninja);
     samurai.move();
-  })
+  });
+  this.shurikens.forEach(function (shuriken) {
+    shuriken.move();
+  });
 }
 
+Game.prototype.throwShuriken = function() {
+  console.log(this.ninja.dir);
+  this.shurikens.push(new Shuriken(this.$arena, this.ninja.dir, this.ninja.x, this.ninja.y));
+}
 
 $(document).ready(function() {
   game = new Game();
@@ -23,4 +31,8 @@ $(document).ready(function() {
       game.ninja.setDirection(direction);
     });
   });
+
+  Mousetrap.bind('space', function() {
+    game.throwShuriken();
+  })
 })
