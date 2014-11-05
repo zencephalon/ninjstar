@@ -4,8 +4,8 @@ function Samurai(arena) {
   this.y = Math.random() * this.$arena.height();
   this.dir = "sitting there like a lazybutt";
   this.speed = 2;
-  this.height = 17;
-  this.width = 17;
+  this.height = 19;
+  this.width = 18;
   this.name = 'samurai';
   this.initDisplay();
 }

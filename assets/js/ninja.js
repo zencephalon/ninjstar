@@ -47,8 +47,8 @@ Ninja.prototype.inBounds = function() {
 }
 
 Ninja.prototype.updateDisplay = function() {
-  this.$sprite.css('top', this.y - this.height / 2);
-  this.$sprite.css('left', this.x - this.width / 2);
+  this.$sprite.css('top', this.y);
+  this.$sprite.css('left', this.x);
 }
 
 Ninja.prototype.setDirection = function(dir) {
