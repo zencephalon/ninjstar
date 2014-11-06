@@ -64,3 +64,7 @@ Ninja.prototype.setDirection = function(dir) {
       break;
   }
 }
+
+Ninja.prototype.destroy = function() {
+  this.$sprite.remove();
+}

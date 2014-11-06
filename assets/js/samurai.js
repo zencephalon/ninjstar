@@ -11,9 +11,16 @@ function Samurai(arena) {
   this.sprite = {left: 'url("./assets/img/samurai-left.gif")', right: 'url("./assets/img/samurai-right.gif")'};
 }
 
-['initDisplay', 'updateDisplay', 'move', 'inBounds', 'setDirection'].forEach(function (methodName) {
+['initDisplay', 'updateDisplay', 'move', 'inBounds', 'setDirection', 'destroy'].forEach(function (methodName) {
   Samurai.prototype[methodName] = Ninja.prototype[methodName];
 });
+
+Samurai.prototype.checkCollision = function(object) {
+  return (this.x < object.x + object.width &&
+   this.x + this.width > object.x &&
+   this.y < object.y + object.height &&
+   this.height + this.y > object.y);
+}
 
 Samurai.prototype.track = function(ninja) {
   //console.log(ninja);

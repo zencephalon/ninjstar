@@ -17,10 +17,20 @@ Game.prototype.loop = function() {
     this.samurai.push(new Samurai(this.$arena))
     this.nextSpawnTime += this.spawnInterval;
   }
+  shurikens = this.shurikens;
   this.samurai.forEach(function (samurai) {
-    samurai.track(ninja);
-    samurai.move();
+    shurikens.forEach(function (shuriken) {
+      if (samurai.checkCollision(shuriken)) {
+        samurai.dead = true;
+        samurai.destroy();
+      }
+    });
+    if (! samurai.dead) {
+      samurai.track(ninja);
+      samurai.move();
+    }
   });
+  this.samurai = _(this.samurai).reject(function(samurai) { return samurai.dead });
   this.shurikens.forEach(function (shuriken) {
     shuriken.move();
     if (shuriken.outOfBounds) {
