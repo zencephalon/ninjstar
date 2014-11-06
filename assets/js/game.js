@@ -14,7 +14,11 @@ Game.prototype.loop = function() {
   });
   this.shurikens.forEach(function (shuriken) {
     shuriken.move();
+    if (shuriken.outOfBounds) {
+      shuriken.destroy();
+    }
   });
+  this.shurikens = _(this.shurikens).reject(function(shuriken) { return shuriken.outOfBounds });
 }
 
 Game.prototype.throwShuriken = function() {

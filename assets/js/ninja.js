@@ -38,6 +38,7 @@ Ninja.prototype.move = function() {
   if (! this.inBounds()) {
     this.x = old_x;
     this.y = old_y;
+    this.outOfBounds = true;
   }
   this.updateDisplay();
 }

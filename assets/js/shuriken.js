@@ -10,6 +10,10 @@ function Shuriken(arena, direction, x, y) {
   this.initDisplay();
 }
 
+Shuriken.prototype.destroy = function() {
+  this.$sprite.remove();
+}
+
 Shuriken.prototype.initDisplay = Ninja.prototype.initDisplay;
 Shuriken.prototype.updateDisplay = Ninja.prototype.updateDisplay;
 Shuriken.prototype.move = Ninja.prototype.move;
