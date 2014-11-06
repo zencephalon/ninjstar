@@ -8,6 +8,7 @@ function Ninja(arena) {
   this.width = 17;
   this.name = 'ninja';
   this.initDisplay();
+  this.sprite = {left: 'url("./assets/img/ninja-left.gif")', right: 'url("./assets/img/ninja-right.gif")'};
 }
 
 Ninja.prototype.initDisplay = function() {
@@ -55,10 +56,10 @@ Ninja.prototype.setDirection = function(dir) {
   this.dir = dir;
   switch (this.dir) {
     case 'right':
-      this.$sprite.css('background-image', 'url("./assets/img/ninja-right.gif")');
+      this.$sprite.css('background-image', this.sprite.right);
       break;
     case 'left':
-      this.$sprite.css('background-image', 'url("./assets/img/ninja-left.gif")');
+      this.$sprite.css('background-image', this.sprite.left);
       break;
   }
 }

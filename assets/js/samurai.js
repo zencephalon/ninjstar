@@ -8,29 +8,30 @@ function Samurai(arena) {
   this.width = 18;
   this.name = 'samurai';
   this.initDisplay();
+  this.sprite = {left: 'url("./assets/img/samurai-left.gif")', right: 'url("./assets/img/samurai-right.gif")'};
 }
 
-Samurai.prototype.initDisplay = Ninja.prototype.initDisplay;
-Samurai.prototype.updateDisplay = Ninja.prototype.updateDisplay;
-Samurai.prototype.move = Ninja.prototype.move;
-Samurai.prototype.inBounds = Ninja.prototype.inBounds;
+['initDisplay', 'updateDisplay', 'move', 'inBounds', 'setDirection'].forEach(function (methodName) {
+  Samurai.prototype[methodName] = Ninja.prototype[methodName];
+});
+
 Samurai.prototype.track = function(ninja) {
   //console.log(ninja);
   diff_x = Math.abs(this.x - ninja.x);
   diff_y = Math.abs(this.y - ninja.y);
   if (diff_x > diff_y) {
    if (this.x > ninja.x) {
-      this.dir = "left";
+      this.setDirection('left');
     }
     if (this.x < ninja.x) {
-      this.dir = "right";
+      this.setDirection('right');
     }
   } else {
    if (this.y < ninja.y) {
-      this.dir = "down";
+      this.setDirection('down');
     }
     if (this.y > ninja.y) {
-      this.dir = "up";
+      this.setDirection('up');
     }
   }
 }
